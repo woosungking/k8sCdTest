@@ -2,4 +2,4 @@ server:
   service:
     annotations: {}  
     type: NodePort   
-    nodePortHttp: 30080
+    nodePortHttp: 30990
