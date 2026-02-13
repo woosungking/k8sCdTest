@@ -1,20 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mysql-app
+  name: forever-dev-be
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/woosungking/k8sBatchTest
-    path: k8s/mysql 
-    targetRevision: main
+    path: k8s/batch-server
+    targetRevision: main 
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: mysql 
+    namespace: default
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
-    syncOptions:
-      - CreateNamespace=true 
+# 레포는 k8sBatchTest 레포를 바라보겠음.
