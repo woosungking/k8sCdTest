@@ -3,3 +3,4 @@ server:
     annotations: {}  
     type: NodePort   
     nodePortHttp: 30990
+    nodePortHttps: 30991
