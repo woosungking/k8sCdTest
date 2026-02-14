@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mysql-proxy-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/woosungking/k8sBatchTest
+    path: k8s/proxysql-cluster 
+    targetRevision: main
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mysql 
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true 
